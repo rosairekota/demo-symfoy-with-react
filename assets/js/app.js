@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "./pages/Image";
-import axios from "axios";
+import { baseApi } from "./config/env";
 export const App = () => {
   const [images, setImages] = useState([]);
 
@@ -9,16 +9,13 @@ export const App = () => {
   }, []);
 
   const getImages = () => {
-    axios
-      .get("https://127.0.0.1:8000/api/image/get-images")
-      .then(({ data }) => {
-        setImages(data.images);
-      });
+    baseApi.get("/image/get-images").then(({ data }) => {
+      setImages(data.images);
+    });
   };
 
   return (
     <>
-
       <Image images={images} />
     </>
   );
