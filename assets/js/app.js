@@ -18,6 +18,7 @@ export const App = () => {
 
   return (
     <>
+
       <Image images={images} />
     </>
   );
